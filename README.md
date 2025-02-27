@@ -1,19 +1,27 @@
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
 
 ## Getting Started
-1. `npm install -g pnpm@latest-10` // More info in [pnpm](https://pnpm.io/installation)
-
-2. Run the development server:
-
+1. Download [pnpm](https://pnpm.io/installation)
 ```bash
-pnpm dev # recommended
-# or
-npm run dev
+npm install -g pnpm@latest-10`
 ```
 
-3. Follow the steps in [Loading extension in Chrome](https://docs.plasmo.com/framework#loading-the-extension-in-chrome)
+2. Install the dependencies
+```bash
+pnpm i
+```
 
-4. Edit the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
+3. Run the development server:
+
+```bash
+pnpm dev
+# or
+npm run dev # didn't work in my local env
+```
+
+4. Follow the steps in [Loading extension in Chrome](https://docs.plasmo.com/framework#loading-the-extension-in-chrome)
+
+5. Edit the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
 
 For further guidance, [visit our Documentation](https://docs.plasmo.com/)
 
