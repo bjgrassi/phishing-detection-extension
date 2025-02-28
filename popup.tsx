@@ -26,9 +26,7 @@ function IndexPopup() {
         fontFamily: "Arial, sans-serif",
         width: 300,
       }}>
-      <h2 style={{ marginBottom: 16 }}>
-        Phishing Detection
-      </h2>
+      <h2 style={{ marginBottom: 16 }}>Phishing Detection</h2>
       <div style={{ marginBottom: 16 }}>
         <input
           style={{ width: "100%", padding: 8, marginBottom: 8 }}
