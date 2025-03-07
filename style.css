@@ -1,0 +1,8 @@
+div#warning-phishing-ext {
+    background: red;
+    color: white;
+    position: absolute;
+    right: 136px;
+    top: -14px;
+    z-index: 10;
+}
