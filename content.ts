@@ -26,9 +26,12 @@ function scanDOM() {
         link.addEventListener('mouseenter', (e) => {
           const target = e.target as HTMLElement;
           const linkRect = target.getBoundingClientRect();
+          const warningRect = warningDiv.getBoundingClientRect();
+  
           warningDiv.style.display = 'block';
-          warningDiv.style.top = `${linkRect.top - warningDiv.offsetHeight - 5}px`;
-          warningDiv.style.left = `${linkRect.left}px`;
+          // Center horizontally and position above the link
+          warningDiv.style.top = `${window.scrollY + linkRect.top - warningRect.height - 5}px`;
+          warningDiv.style.left = `${window.scrollX + linkRect.left + linkRect.width/2}px`;
         });
         
         link.addEventListener('mouseleave', () => {

@@ -10,6 +10,8 @@ div#warning-phishing-ext {
     z-index: 9999;
     max-width: 300px;
     pointer-events: none; /* Allows clicks to pass through to the link */
+    transform: translateX(-50%); /* This helps with horizontal centering */
+    width: max-content; /* Make the div only as wide as its content */
 }
 
 /* Arrow for tooltip effect */
@@ -28,12 +30,6 @@ div#warning-phishing-ext::after {
     margin: 0;
     font-family: Arial, sans-serif;
     line-height: 1.4;
-}
-
-/* Position the warning relative to the hovered link */
-a:hover + div#warning-phishing-ext,
-a + div#warning-phishing-ext:hover {
-    display: block;
 }
 
 .popup-container {
