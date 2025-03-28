@@ -1,3 +1,5 @@
+import 'style.css'
+
 import { useState } from "react";
 
 function IndexPopup() {
@@ -20,32 +22,27 @@ function IndexPopup() {
   };
 
   return (
-    <div
-      style={{
-        padding: 16,
-        fontFamily: "Arial, sans-serif",
-        width: 300,
-      }}>
-      <h2 style={{ marginBottom: 16 }}>Phishing Detection</h2>
-      <div style={{ marginBottom: 16 }}>
+    <div className="popup-container">
+      <h2 className="popup-title">Phishing Detection</h2>
+      <div className="input-section">
         <input
-          style={{ width: "100%", padding: 8, marginBottom: 8 }}
+          className="url-input"
           onChange={(e) => setUrl(e.target.value)}
           value={url}
           placeholder="Enter URL to check"
         />
         <button
-          style={{ width: "100%", padding: 8, backgroundColor: "#007BFF", color: "white", border: "none", borderRadius: 4 }}
+          className="check-button"
           onClick={checkUrl}
         >
           Check URL
         </button>
       </div>
-      <div style={{ marginBottom: 16 }}>
+      <div className="status-section">
         <strong>Status:</strong> {status}
       </div>
       {threats.length > 0 && (
-        <div>
+        <div className="threats-section">
           <strong>Detected Threats:</strong>
           <ul>
             {threats.map((threat, index) => (
