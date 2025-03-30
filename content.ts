@@ -10,11 +10,11 @@ document.body.appendChild(warningDiv);
 
 function scanLinksDOM() {
   if (chrome.runtime?.id) {
-    document.querySelectorAll('a').forEach(sendLink);
+    document.querySelectorAll('a').forEach(PostUrlContent);
   }
 }
 
-async function sendLink(link: HTMLAnchorElement) {
+async function PostUrlContent(link: HTMLAnchorElement) {
   if (link.dataset.phishingChecked) return
 
   try {

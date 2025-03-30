@@ -34,7 +34,7 @@ div#warning-phishing-ext::after {
 
 .popup-container {
     padding: 16px;
-    font-family: "Arial, sans-serif";
+    font-family: Arial, sans-serif;
     width: 300px;
 }
 
@@ -59,6 +59,16 @@ div#warning-phishing-ext::after {
     color: white;
     border: none;
     border-radius: 4px;
+}
+
+.check-button.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.check-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
 
 .status-section {

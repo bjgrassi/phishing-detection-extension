@@ -7,18 +7,34 @@ function IndexPopup() {
   const [status, setStatus] = useState("Idle"); // 'Idle', 'Checking', 'Safe', 'Unsafe'
   const [threats, setThreats] = useState<string[]>([]);
 
-  const checkUrl = async () => {
+  const PostUrlPopup = async () => {
+    if (!url) return;
+    
     setStatus("Checking");
-    // Simulate a network request to check the URL
-    setTimeout(() => {
-      const isSafe = Math.random() > 0.5; // Randomly determine if the URL is safe
-      if (isSafe) {
-        setStatus("Safe");
-      } else {
+    
+    try {
+      // Send message to background script
+      const response = await chrome.runtime.sendMessage({
+        action: "postUrl",
+        url: url
+      });
+      
+      if (response.isPhishing) {
         setStatus("Unsafe");
-        setThreats([...threats, url]); // Add the URL to the threats list
+        setThreats([...threats, url]);
+      } else {
+        setStatus("Safe");
       }
-    }, 1000);
+    } catch (error) {
+      console.error("Error checking URL:", error);
+      setStatus("Error");
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && status !== "Checking") {
+      PostUrlPopup();
+    }
   };
 
   return (
@@ -28,12 +44,14 @@ function IndexPopup() {
         <input
           className="url-input"
           onChange={(e) => setUrl(e.target.value)}
+          onKeyDown={handleKeyDown}
           value={url}
           placeholder="Enter URL to check"
         />
         <button
-          className="check-button"
-          onClick={checkUrl}
+          className={`check-button ${status === "Checking" ? "disabled" : ""}`}
+          onClick={PostUrlPopup}
+          disabled={status === "Checking"}
         >
           Check URL
         </button>
