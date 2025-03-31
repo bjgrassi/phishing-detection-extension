@@ -1,9 +1,8 @@
-const BASE_URL = 'https://17c6-99-235-211-164.ngrok-free.app/'
+const BASE_URL = 'https://369c-99-235-211-164.ngrok-free.app/'
 
-// Listen for messages from content script
+// Listen for messages from popup and content script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "postUrl") {
-      console.warn("Background", request.url)
     postUrl(request.url).then(isPhishing => {
       sendResponse({ isPhishing })
     })
@@ -14,7 +13,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 const postUrl = async (url: string): Promise<boolean> => {
   let isPhishing = false
   try {
-    const response = await fetch(BASE_URL + "model/1", {
+    const response = await fetch(BASE_URL + "model/2", {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
@@ -24,7 +23,7 @@ const postUrl = async (url: string): Promise<boolean> => {
     const data = await response.json()
     console.warn("response", response)
     console.warn("json", data)
-    isPhishing = data['1'] === 1
+    isPhishing = data['prediction'] === 1
     console.warn("isPhishing", isPhishing)
     return isPhishing
   } catch (error) {
