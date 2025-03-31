@@ -1,4 +1,4 @@
-const BASE_URL = 'https://6a71-99-235-211-164.ngrok-free.app/'
+const BASE_URL = 'https://17c6-99-235-211-164.ngrok-free.app/'
 
 // Listen for messages from content script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -17,9 +17,7 @@ const postUrl = async (url: string): Promise<boolean> => {
     const response = await fetch(BASE_URL + "model/1", {
       method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ url: url })
     });
@@ -27,9 +25,13 @@ const postUrl = async (url: string): Promise<boolean> => {
     console.warn("response", response)
     console.warn("json", data)
     isPhishing = data['1'] === 1
+    console.warn("isPhishing", isPhishing)
     return isPhishing
   } catch (error) {
     console.error("Phishing check failed:", error)
     return isPhishing
   }
 }
+
+// http://platform.clubpetnyc.com/
+// https://www.google.ca/

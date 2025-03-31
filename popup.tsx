@@ -19,6 +19,7 @@ function IndexPopup() {
         url: url
       });
       
+      console.warn("response?.isPhishing", response)
       if (response.isPhishing) {
         setStatus("Unsafe");
         setThreats([...threats, url]);
