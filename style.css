@@ -72,9 +72,25 @@ div#warning-phishing-ext::after {
 }
 
 .status-section {
+    font-size: 14px;
     margin-bottom: 16px;
 }
 
-.threats-section {
-    margin-bottom: 16px;
+.status-result {
+    padding: 2px;
+}
+
+.is-unsafe {
+    background: rgba(128, 0, 0, 0.1);
+    color: rgba(128, 0, 0);
+}
+
+.is-safe {
+    background: rgba(0, 128, 0, 0.1);
+    color: rgba(0, 128, 0);
+}
+
+.is-checking {
+    background: #ADD8E6;
+    color: #555
 }

@@ -58,18 +58,12 @@ function IndexPopup() {
         </button>
       </div>
       <div className="status-section">
-        <strong>Status:</strong> {status}
+        <span className={
+          `status-result ${status === "Checking" ? "is-checking" : status === "Safe" ? "is-safe" : status === "Unsafe" ? "is-unsafe" : ""}`
+        }>
+          <strong>Status:</strong> {status}
+        </span>
       </div>
-      {threats.length > 0 && (
-        <div className="threats-section">
-          <strong>Detected Threats:</strong>
-          <ul>
-            {threats.map((threat, index) => (
-              <li key={index}>{threat}</li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }
